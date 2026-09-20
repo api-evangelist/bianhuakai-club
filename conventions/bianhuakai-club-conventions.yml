@@ -1,0 +1,61 @@
+generated: '2026-09-19'
+method: probed
+source: https://bianhuakai.club/.well-known/agent.json + live JSON-RPC probes of https://bianhuakai.club/a2a/, 2026-09-19
+summary: >-
+  There is no documentation to read conventions from, so this records what the card and the live
+  endpoint express. The surface is a single anonymous A2A JSON-RPC 2.0 endpoint whose one skill
+  (film_video_at_location) creates a task that a human fulfils off-protocol and confirms by email.
+  No idempotency mechanism, no reversal operation, no versioning scheme, no pagination, no
+  request-id header and no rate-limit signalling exist; errors are JSON-RPC error objects.
+protocol:
+  style: A2A over JSON-RPC 2.0 (preferredTransport JSONRPC)
+  endpoint: https://bianhuakai.club/a2a/
+  input_modes: [text/plain, application/json]
+  output_modes: [application/json, text/plain]
+  streaming: false
+  push_notifications: false
+  state_transition_history: true
+authentication:
+  style: none
+  ref: authentication/bianhuakai-club-authentication.yml
+idempotency:
+  coverage: none
+  mechanism: null
+  note: >-
+    No Idempotency-Key or equivalent is declared on the card or documented anywhere. A2A task ids
+    are client-supplied in message/send, which is the only replay protection an agent could lean
+    on, and the observed endpoint echoes ANY task id back as completed (see reversibility below),
+    so it does not demonstrably dedupe either.
+reversibility:
+  grade: none
+  write_surface:
+  - operation: message/send (skill film_video_at_location)
+    effect: requests a human to travel to a location and film ~10 minutes of video
+    reversal: null
+    window: null
+    note: >-
+      Nothing published names a cancel path. A2A defines tasks/cancel, but the card does not
+      document it, the service page states no cancellation or refund terms, and payment happens
+      by remittance outside the protocol - so no reversal operation and no window can be
+      asserted. tasks/get was probed with a never-created id and returned status completed, so an
+      agent cannot even reliably read task state back after submitting.
+  dry_run_mode: none
+  dry_run_note: no dry-run, preview or quote method is declared
+errors:
+  envelope: JSON-RPC 2.0 error object {code, message} inside {jsonrpc, id, error}
+  observed: '-32601 "Method not found: <method>" on an unknown method (HTTP 200)'
+  http_status_on_error: 200 (JSON-RPC style; transport-level 404 {"error":"not found","path":...} for unknown URL paths)
+  problem_details: false
+versioning:
+  scheme: none published
+  card_version: 0.1.0
+  protocol_version: 0.3.0
+pagination: none (no list operations)
+request_id: none observed
+rate_limits:
+  signalling: none observed
+  ref: rate-limits/bianhuakai-club-rate-limits.yml
+cors:
+  allow_origin: '*'
+  allow_headers: [Content-Type, Authorization, x-broker-token]
+  allow_methods: [GET, POST, OPTIONS, DELETE]

@@ -1,0 +1,35 @@
+generated: '2026-09-19'
+method: probed
+source: live probes of https://bianhuakai.club/.well-known/agent.json and https://bianhuakai.club/a2a/, 2026-09-19
+summary: >-
+  The only standards this surface conforms to are the two it is built from, and both were observed
+  rather than read: an A2A 0.3.0 agent card that grades conformant against A2A 1.0.0, and a live
+  JSON-RPC 2.0 endpoint that returns the spec's -32601 envelope for an unknown method. There is no
+  OAuth, no OIDC, no OpenAPI, no RFC 9457 problem details, no pagination and no idempotency
+  mechanism. The market (custom on-location video filming, a human service) has no domain
+  standard, so domain_standard is not asserted and nothing is invented to fill the slot.
+conformance:
+- id: a2a
+  conforms: true
+  version: '0.3.0 card, graded against A2A 1.0.0'
+  evidence: "https://bianhuakai.club/.well-known/agent.json - capabilities is an object, protocolVersion 0.3.0, skills[] array (1 skill), preferredTransport JSONRPC, defaultInputModes/defaultOutputModes present - see a2a/bianhuakai-club-a2a.yml"
+  caveat: "served at the legacy /.well-known/agent.json path only; the canonical /.well-known/agent-card.json 404s"
+- id: json-rpc-2.0
+  conforms: true
+  evidence: "POST {\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"agent/getAuthenticatedExtendedCard\"} to https://bianhuakai.club/a2a/ returned HTTP 200 {\"jsonrpc\":\"2.0\",\"id\":1,\"error\":{\"code\":-32601,\"message\":\"Method not found: ...\"}} - the spec's method-not-found code and envelope"
+  caveat: "tasks/get for a never-created id returned a completed task rather than the A2A TaskNotFound error (-32001) - the endpoint is a thin stub; JSON-RPC framing conforms, A2A task semantics are only partly implemented"
+- id: oauth2
+  conforms: false
+  evidence: "securitySchemes {} on the card; /.well-known/oauth-authorization-server and /.well-known/oauth-protected-resource both 404; the endpoint answered an anonymous POST"
+- id: oidc
+  conforms: false
+  evidence: "/.well-known/openid-configuration 404"
+- id: rfc9457
+  conforms: false
+  evidence: "errors are JSON-RPC error objects (application/json), not application/problem+json"
+- id: openapi
+  conforms: false
+  evidence: "no OpenAPI/Swagger document at /openapi.json, /openapi.yaml, /swagger.json, /api-docs, /docs or /a2a/openapi.json (all 404)"
+domain_standard:
+  asserted: false
+  note: no domain standard exists for on-location video filming; reward-only, not penalised

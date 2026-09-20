@@ -1,0 +1,15 @@
+generated: '2026-09-19'
+method: probed
+source: response headers observed on POST https://bianhuakai.club/a2a/ (JSON-RPC) and GET https://bianhuakai.club/.well-known/agent.json, 2026-09-19; nothing the provider publishes documents a limit
+limit_count: 0
+limit_count_note: >-
+  Honest zero: no rate limit is documented anywhere the provider publishes (there are no docs at
+  all beyond the card and the service page), and no rate-limit signalling header was observed on
+  any response - no X-RateLimit-*, no RateLimit-*, no Retry-After. The natural throttle is that
+  every task is fulfilled by one human videographer in Hangzhou.
+headers_observed:
+  on_a2a_post_200: [server, date, content-type, transfer-encoding, connection, access-control-allow-origin, access-control-allow-headers, access-control-allow-methods]
+  on_card_get_200: [server, date, content-type, connection, access-control-allow-origin, access-control-allow-headers, access-control-allow-methods]
+  rate_limit_headers: []
+exhaustion_status: unknown
+limits: []

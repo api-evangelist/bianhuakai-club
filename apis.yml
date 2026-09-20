@@ -1,18 +1,67 @@
 aid: bianhuakai-club
 name: OPC / 彼岸花开
-description: 'OPC / 彼岸花开 is a company surfaced via the API Evangelist harvest backlog (source: a2a-registry)
-  and added to the network as a stub for full-pipeline profiling.'
+description: >-
+  OPC / 彼岸花开 is a one-person company (OPC) operated by Lei Zhang in Hangzhou, China. Its
+  agent-facing surface is a single A2A agent, "China On-Site Video Service": an agent (or a person)
+  supplies a Google Maps link or coordinates for any place in China and Lei travels there and films
+  about ten minutes of genuine, unscripted footage - streets, markets, temples, a family's old
+  neighborhood - delivered by email as an MP4 for a fixed $50 USD (other requests at $50/hour, paid
+  by Wise, Panda Remit or Remitly). The A2A agent card is served from the company's own domain at
+  the legacy /.well-known/agent.json path and grades conformant against A2A 1.0.0; the JSON-RPC
+  endpoint at /a2a/ is anonymous and live. It is an agent card in front of a human fulfilment
+  service, not a software API: there is no OpenAPI, MCP server, SDK, developer documentation or
+  developer signup. The site root hosts a separate login-gated Chinese consumer chat app (彼岸花开 · 花灵).
 url: https://raw.githubusercontent.com/api-evangelist/bianhuakai-club/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:a2a-registry
-x-tier: stub
-x-tier-reason: harvest
+x-tier: profiled
+x-tier-reason: enrichment pass 2026-09-19 (was stub; the a2aregistry.org harvest named the operator OPC / 彼岸花开 per the card's provider.organization and author fields - a one-person company, Lei Zhang, Hangzhou)
 specificationVersion: '0.20'
 created: '2026-09-19'
 modified: '2026-09-19'
 tags:
 - Company
-apis: []
+- Agents
+- A2A
+- Video
+- Video Production
+- China
+- Hangzhou
+- Travel
+- Genealogy
+- Real Estate
+- Documentary
+- Local Services
+- One-Person Company
+apis:
+- name: China On-Site Video Service (A2A agent)
+  description: >-
+    A2A agent operated by Lei Zhang: you provide a Google Maps link or coordinates of any place in
+    China and a real local goes there and films ~10 minutes of genuine, unscripted everyday footage
+    (streets, markets, people, food, atmosphere) - not stock footage - delivered to your email as an
+    MP4 attachment. One skill, film_video_at_location. JSON-RPC 2.0 over HTTPS, anonymous; the
+    endpoint accepts the task and a human fulfils it, so completion is confirmed by email rather
+    than by polling tasks/get. Fixed $50 USD per video, paid by remittance outside the protocol.
+  humanURL: https://bianhuakai.club/lei/
+  baseURL: https://bianhuakai.club/a2a/
+  tags: [A2A, Agents, Video, China, Hangzhou, Travel, Genealogy, Documentary]
+  properties:
+  - type: AgentCard
+    url: a2a/bianhuakai-club-a2a.yml
+  - type: AgentCard
+    url: https://bianhuakai.club/.well-known/agent.json
+  - type: Pricing
+    url: https://bianhuakai.club/lei/
+  - type: Authentication
+    url: authentication/bianhuakai-club-authentication.yml
+  - type: Conventions
+    url: conventions/bianhuakai-club-conventions.yml
+  - type: Conformance
+    url: conformance/bianhuakai-club-conformance.yml
+  - type: Plans
+    url: plans/bianhuakai-club-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/bianhuakai-club-rate-limits.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -21,3 +70,30 @@ maintainers:
 common:
 - type: Website
   url: https://bianhuakai.club/
+- type: Pricing
+  url: https://bianhuakai.club/lei/
+- type: AgentCard
+  url: a2a/bianhuakai-club-a2a.yml
+- type: WellKnown
+  url: well-known/bianhuakai-club-well-known.yml
+- type: LLMsTxt
+  url: llms/bianhuakai-club-llms.txt
+- type: Authentication
+  url: authentication/bianhuakai-club-authentication.yml
+- type: Conventions
+  url: conventions/bianhuakai-club-conventions.yml
+- type: Conformance
+  url: conformance/bianhuakai-club-conformance.yml
+- type: Plans
+  url: plans/bianhuakai-club-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/bianhuakai-club-rate-limits.yml
+- type: DomainSecurity
+  url: security/bianhuakai-club-domain-security.yml
+- type: X-RegulatoryPosture
+  url: regulatory/bianhuakai-club-regulatory-posture.yml
+x-enrichment:
+  date: '2026-09-19'
+  status: enriched
+  artifacts_added: 12
+  pass: local-v3

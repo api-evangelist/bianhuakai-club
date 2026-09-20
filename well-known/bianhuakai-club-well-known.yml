@@ -1,0 +1,47 @@
+generated: '2026-09-19'
+method: probed
+source: live probes of /.well-known/ on bianhuakai.club, 2026-09-19 (www.bianhuakai.club does not resolve - NXDOMAIN; the A2A endpoint is on the apex host, so there is no separate resource-server host to probe)
+summary: >-
+  Exactly one real document is served: the A2A agent card at the legacy /.well-known/agent.json
+  (200 application/json, 1,915 bytes, graded conformant in a2a/bianhuakai-club-a2a.yml). The
+  canonical /.well-known/agent-card.json 404s. Nothing else is served: no security.txt (so NO
+  SecurityTxt pointer), no openid-configuration, no oauth-authorization-server, no
+  oauth-protected-resource (consistent with the anonymous JSON-RPC endpoint - there is no OAuth
+  anywhere), no api-catalog, no ai-plugin.json, no mcp.json, no x402/ucp/acp, no apis.json, no
+  llms.txt, no robots.txt, no sitemap.
+pointer_basis: >-
+  WellKnown pointer emitted on the strength of the single 200 application/json agent card at
+  /.well-known/agent.json. SecurityTxt pointer NOT emitted - RFC 9116 is unimplemented.
+false_positive_watch: >-
+  The host answers unknown paths with a clean 9-byte "Not Found" 404, so the one 200 is real. Two
+  traps: (1) HEAD on /.well-known/agent.json answers 404 - only GET returns the card; (2) every
+  sub-path of /lei/ (e.g. /lei/.well-known/agent.json, /lei/openapi.json) answers 200 text/html -
+  that is the SPA catch-all of the marketing page, not a document, and is recorded as a miss.
+hosts:
+- host: https://bianhuakai.club
+  documents:
+  - {path: /.well-known/agent.json, status: 200, file: ../a2a/bianhuakai-club-agent-card.json, note: "A2A agent card (legacy pre-0.3 path) - graded conformant in a2a/bianhuakai-club-a2a.yml; GET only, HEAD answers 404"}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/oauth-protected-resource, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+  - {path: /.well-known/mcp.json, status: 404}
+  - {path: /.well-known/x402, status: 404}
+  - {path: /.well-known/ucp.json, status: 404}
+  - {path: /.well-known/acp.json, status: 404}
+  - {path: /.well-known/apis.json, status: 404}
+  - {path: /apis.json, status: 404}
+  - {path: /llms.txt, status: 404}
+  - {path: /robots.txt, status: 404}
+  - {path: /sitemap.xml, status: 404}
+  - {path: /openapi.json, status: 404}
+  - {path: /openapi.yaml, status: 404}
+  - {path: /swagger.json, status: 404}
+  - {path: /a2a/.well-known/agent.json, status: 404}
+  - {path: /lei/.well-known/agent.json, status: 200, note: "text/html SPA shell of the /lei/ page - NOT a document, treated as a miss"}
+- host: https://www.bianhuakai.club
+  documents: []
+  note: NXDOMAIN - the www label does not resolve

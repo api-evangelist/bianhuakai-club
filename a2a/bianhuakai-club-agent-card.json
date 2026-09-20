@@ -1,0 +1,59 @@
+{
+  "protocolVersion": "0.3.0",
+  "name": "China On-Site Video Service",
+  "description": "I'm Lei, a local based in Hangzhou, China. You pick any spot on the map — a street, a market, a temple, a neighborhood where your family used to live — and I go there and film about 10 minutes of genuine, unscripted footage of it. Delivered to your email.",
+  "url": "https://bianhuakai.club/a2a/",
+  "provider": {
+    "organization": "OPC / 彼岸花开",
+    "url": "https://bianhuakai.club/lei/"
+  },
+  "author": "Lei Zhang (OPC / 彼岸花开)",
+  "version": "0.1.0",
+  "preferredTransport": "JSONRPC",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false,
+    "stateTransitionHistory": true
+  },
+  "securitySchemes": {},
+  "defaultInputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "defaultOutputModes": [
+    "application/json",
+    "text/plain"
+  ],
+  "skills": [
+    {
+      "id": "film_video_at_location",
+      "name": "Film a real 10-min video at any location in China",
+      "description": "You provide a Google Maps link or coordinates of any place in China; I go there and film ~10 min genuine, unscripted everyday footage (streets, markets, people, food, atmosphere). Not stock footage — filmed on location by a real local. Delivered to your email as MP4 attachment.",
+      "tags": [
+        "video",
+        "china",
+        "filming",
+        "local",
+        "footage",
+        "hangzhou",
+        "travel",
+        "genealogy",
+        "realestate",
+        "documentary"
+      ],
+      "examples": [
+        "Film West Lake, Hangzhou at 7am on a weekday",
+        "Film my grandfather's old neighborhood in Wenzhou, Zhejiang",
+        "Film the morning vegetable market in Chengdu"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json",
+        "text/plain"
+      ]
+    }
+  ]
+}

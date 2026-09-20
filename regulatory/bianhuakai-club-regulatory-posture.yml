@@ -1,0 +1,34 @@
+generated: '2026-09-19'
+method: searched
+probe: true
+summary: >-
+  Empty signals, measured. OPC / 彼岸花开 is a one-person company whose entire public surface is a
+  consumer chat app at the site root (彼岸花开 · 花灵, login-gated), the /lei/ service page for the
+  on-site video service, and the A2A card + JSON-RPC endpoint. It publishes no accessibility
+  conformance report, no subprocessor list, no DPA, no privacy policy or terms page at any
+  conventional path, no data-subject-request page, no transparency report, no SBOM, no
+  support-lifetime statement, no data-residency statement and no AI-transparency page. The /lei/
+  page does state in prose that "Replies are written by an AI trained by Lei himself. Lei reviews
+  the chat history regularly." - an in-page AI disclosure, recorded below as observed but NOT
+  mapped onto ai_transparency, because it is a sentence on a marketing page rather than a
+  transparency document (the known false-positive path). No regime is inferred here.
+signals: {}
+probed:
+- {url: 'https://bianhuakai.club/accessibility', status: 404}
+- {url: 'https://bianhuakai.club/accessibility/vpat', status: 404}
+- {url: 'https://bianhuakai.club/legal/subprocessors', status: 404}
+- {url: 'https://bianhuakai.club/legal/dpa', status: 404}
+- {url: 'https://bianhuakai.club/privacy/requests', status: 404}
+- {url: 'https://bianhuakai.club/privacy', status: 404}
+- {url: 'https://bianhuakai.club/terms', status: 404}
+- {url: 'https://bianhuakai.club/legal', status: 404}
+- {url: 'https://bianhuakai.club/security', status: 404}
+- {url: 'https://bianhuakai.club/security/sbom', status: 404}
+- {url: 'https://bianhuakai.club/transparency', status: 404}
+- {url: 'https://bianhuakai.club/ai/transparency', status: 404}
+- {url: 'https://bianhuakai.club/docs/data-residency', status: 404}
+- {url: 'https://bianhuakai.club/legal/report-content', status: 404}
+- {url: 'https://bianhuakai.club/.well-known/security.txt', status: 404}
+observed_but_not_a_signal:
+- 'https://bianhuakai.club/lei/ footer: "Replies are written by an AI trained by Lei himself. Lei reviews the chat history regularly." (a one-line in-page AI disclosure, not an AI-transparency document)'
+- 'https://bianhuakai.club/lei/ chat widget calls third-party ipwho.is (IP geolocation) and nominatim.openstreetmap.org (reverse geocoding) client-side - data flows a subprocessor list would name, but no such list is published'

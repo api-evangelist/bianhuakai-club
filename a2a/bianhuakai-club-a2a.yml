@@ -1,0 +1,83 @@
+generated: '2026-09-19'
+method: probed
+source: https://bianhuakai.club/.well-known/agent.json
+description: >-
+  OPC / 彼岸花开 (a one-person company - OPC - operated by Lei Zhang in Hangzhou, China) serves ONE
+  A2A Agent Card from its own registrable domain, fetched verbatim on 2026-09-19; nothing here is
+  generated or derived. The card describes "China On-Site Video Service": a human videographer who,
+  given a Google Maps link or coordinates anywhere in China, goes to the spot and films ~10 minutes
+  of unscripted footage, delivered by email as an MP4. It is an agent card fronting a HUMAN
+  fulfilment service, not a software API - the JSON-RPC endpoint accepts a task and a person then
+  films it. The card lives ONLY at the legacy pre-0.3 path /.well-known/agent.json; the canonical
+  /.well-known/agent-card.json 404s. protocolVersion 0.3.0, preferredTransport JSONRPC, endpoint
+  https://bianhuakai.club/a2a/ on the same host, securitySchemes {} (the endpoint is anonymous).
+  Grades conformant against A2A 1.0.0.
+discovery:
+  path: /.well-known/agent.json
+  canonical: false
+  host: bianhuakai.club
+  canonical_path_status: 404
+  canonical_note: >-
+    https://bianhuakai.club/.well-known/agent-card.json returns 404 {"error":"not found"} - the card
+    is served at the legacy path only, one of the ~21% of catalog cards still living there.
+  head_note: >-
+    HEAD /.well-known/agent.json answers 404 while GET answers 200 application/json - a prober that
+    uses HEAD will wrongly record this card as absent.
+  false_positive_watch: >-
+    https://bianhuakai.club/lei/.well-known/agent.json answers 200 text/html (the /lei/ marketing
+    page is an SPA catch-all for every sub-path) - that is NOT a card; only the host-root path is.
+x-evidence:
+  fetched: '2026-09-19'
+  url: https://bianhuakai.club/.well-known/agent.json
+  http_status: 200
+  content_type: application/json
+  size_bytes: 1915
+  file: bianhuakai-club-agent-card.json
+  endpoint_probe: >-
+    POST {"jsonrpc":"2.0","id":1,"method":"agent/getAuthenticatedExtendedCard"} to
+    https://bianhuakai.club/a2a/ answered HTTP 200 with a proper JSON-RPC envelope
+    {"error":{"code":-32601,"message":"Method not found: ..."}} - a live JSON-RPC 2.0 server, not a
+    shell. No Authorization header was needed. A plain GET /a2a/ answers 404 {"error":"not
+    found","path":"/a2a/"}; GET /a2a (no slash) 301s to /a2a/.
+  endpoint_caveat: >-
+    POST tasks/get with a never-created task id answered {"result":{"id":"<that id>","status":
+    {"state":"completed"},"artifacts":[{"name":"confirmation","parts":[{"text":"Task <id> is
+    completed. A human will review and film the requested location."}]}]}} - the server echoes ANY
+    task id back as completed rather than returning TaskNotFound (-32001). Task state is therefore
+    not reliably queryable from the A2A surface; fulfilment is confirmed by email, off-protocol.
+  cors: "Access-Control-Allow-Origin: *; allowed headers Content-Type, Authorization, x-broker-token"
+conformance:
+  spec: A2A 1.0.0
+  grade: conformant
+  protocol_version: 0.3.0
+  preferred_transport: JSONRPC
+  deviations: []
+  checks:
+    capabilities_is_object: true
+    protocol_version_present: true
+    skills_is_array: true
+    preferred_transport_present: true
+    default_input_modes_present: true
+    default_output_modes_present: true
+  notes:
+  - securitySchemes is an empty object and no security[] is declared - the JSON-RPC endpoint is anonymous, which the live probe confirmed, so this is not a deviation
+  - capabilities declares streaming false, pushNotifications false, stateTransitionHistory true
+  - no supportsAuthenticatedExtendedCard, documentationUrl or iconUrl fields; the provider block points at https://bianhuakai.club/lei/ (the human-facing service page)
+  - served at the legacy path only (discovery.canonical false) - a location deviation from A2A 0.3+/RFC 8615, not a card-shape one
+card:
+  name: China On-Site Video Service
+  description: "I'm Lei, a local based in Hangzhou, China. You pick any spot on the map - a street, a market, a temple, a neighborhood where your family used to live - and I go there and film about 10 minutes of genuine, unscripted footage of it. Delivered to your email."
+  url: https://bianhuakai.club/a2a/
+  version: 0.1.0
+  author: Lei Zhang (OPC / 彼岸花开)
+  provider_organization: OPC / 彼岸花开
+  provider_url: https://bianhuakai.club/lei/
+  skills: 1
+  skill_ids: [film_video_at_location]
+  skill_tags: [video, china, filming, local, footage, hangzhou, travel, genealogy, realestate, documentary]
+  input_modes: [text/plain, application/json]
+  output_modes: [application/json, text/plain]
+  file: bianhuakai-club-agent-card.json
+registry:
+  listed_on: a2aregistry.org
+  registry_note: surfaced by the a2aregistry.org harvest of 2026-09-19 (415 agents); the live host above is the source of truth

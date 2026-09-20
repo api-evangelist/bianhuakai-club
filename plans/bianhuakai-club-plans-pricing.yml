@@ -1,0 +1,32 @@
+generated: '2026-09-19'
+method: searched
+source: https://bianhuakai.club/lei/
+summary: >-
+  Pricing is published in prose on the service page, not on a pricing page or a machine-readable
+  endpoint. The page title and meta description state a fixed price of $50 USD for one custom
+  ~10-minute video filmed at any place in China; the body text states "I charge $50/hour" for
+  bespoke requests. Payment is off-platform by remittance (the meta description names Wise, Panda
+  Remit and Remitly) after agreeing the job in chat; the A2A endpoint itself is free to call and
+  carries no payment extension. There are no tiers, subscriptions, seats or API keys.
+machine_readable: null
+model: per-deliverable
+plan_count: 0
+plan_count_note: >-
+  Deliberate zero: a single fixed price per video and an hourly rate for other requests, quoted
+  in chat and paid by remittance - not a plan structure.
+currency: USD
+published_prices:
+- item: custom ~10-minute on-location video, any place in China, delivered by email as MP4
+  price: 50
+  currency: USD
+  unit: video
+  evidence: 'page <title> "... | $50" and meta description "Fixed price $50 USD"'
+- item: other on-site or remote requests (collect daily-life videos, film customs and folklore in Hangzhou, answer questions)
+  price: 50
+  currency: USD
+  unit: hour
+  evidence: 'body text "you tell me what you need, I tell you roughly how long it takes (I charge $50/hour), you pay, and I deliver"'
+payment_methods: [Wise, Panda Remit, Remitly]
+payment_note: stated in the meta description; settlement is human-to-human remittance, not in-protocol
+free_tier:
+  agent_endpoint: "https://bianhuakai.club/a2a/ is anonymous and free to call; the paid thing is the human fulfilment, not the API"
