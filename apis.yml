@@ -29,7 +29,7 @@ tags:
 - Hangzhou
 - Travel
 - Genealogy
-- Real-Estate
+- Real Estate
 - Documentary
 - Local Services
 - One-Person Company
@@ -47,6 +47,7 @@ tags_raw:
 - Documentary
 - Local Services
 - One-Person Company
+- Real-Estate
 apis:
 - name: China On-Site Video Service (A2A agent)
   description: >-
@@ -111,3 +112,10 @@ x-enrichment:
   status: enriched
   artifacts_added: 12
   pass: local-v3
+x-a2a:
+  verified: true
+  probed: '2026-09-26'
+  url: "https://bianhuakai.club/.well-known/agent.json"
+  grade: "conformant"
+  protocol_version: "0.3.0"
+  control: 404
