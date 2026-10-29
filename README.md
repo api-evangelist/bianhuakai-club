@@ -64,5 +64,97 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-OPC / 彼岸花开 is a company surfaced via the API Evangelist harvest backlog (source: a2a-registry) and added to the network as a stub for full-pipeline profiling.
-- https://bianhuakai.club/
+OPC / 彼岸花开 is a one-person company (OPC) operated by Lei Zhang in Hangzhou, China. Its agent-facing surface is a single A2A agent, "China On-Site Video Service": an agent (or a person) supplies a Google Maps link or coordinates for any place in China and Lei travels there and films about ten minutes of genuine, unscripted footage - streets, markets, temples, a family's old neighborhood - delivered by email as an MP4 for a fixed $50 USD (other requests at $50/hour, paid by Wise, Panda Remit or Remitly). The A2A agent card is served from the company's own domain at the legacy /.well-known/agent.json path and grades conformant against A2A 1.0.0; the JSON-RPC endpoint at /a2a/ is anonymous and live. It is an agent card in front of a human fulfilment service, not a software API: there is no OpenAPI, MCP server, SDK, developer documentation or developer signup. The site root hosts a separate login-gated Chinese consumer chat app (彼岸花开 · 花灵).
+
+**Areas:** Company · Agents · A2A · Video · Video Production · China · Hangzhou · Travel · Genealogy · Real Estate · Documentary · Local Services
+
+## OPC / 彼岸花开 on APIs.io
+
+Everything profiled for OPC / 彼岸花开 is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/bianhuakai-club/](https://apis.io/providers/bianhuakai-club/)** — or go straight to one of the APIs or properties below.
+
+### APIs (1)
+
+- [China On-Site Video Service (A2A agent)](https://apis.io/apis/bianhuakai-club/china-on-site-video-service-a2a-agent/) — A2A agent operated by Lei Zhang: you provide a Google Maps link or coordinates of any place in China and a real local goes there and films ~10 minutes of…
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Bianhuakai Club Authentication](https://apis.io/security/bianhuakai-club/bianhuakai-club-authentication/)
+- [Bianhuakai Club Domain Security](https://apis.io/security/bianhuakai-club/bianhuakai-club-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Bianhuakai Club Plans Pricing](https://apis.io/plans/bianhuakai-club/bianhuakai-club-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Bianhuakai Club Rate Limits](https://apis.io/rate-limits/bianhuakai-club/bianhuakai-club-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://bianhuakai.club/)
+- [Pricing](https://bianhuakai.club/lei/)
+
+## API Evangelist rating
+
+**Kin Score 13.2** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 62.5 |
+| Contract quality | 0.0 |
+| Contract governance | 18.2 |
+| Operational transparency | 0.0 |
+| Developer ergonomics | 11.9 |
+| Access clarity | 10.5 |
+
+**Agent readiness 10.8** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | conformant |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 16.7** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/bianhuakai-club/](https://apis.io/providers/bianhuakai-club/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for OPC / 彼岸花开: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/bianhuakai-club/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
